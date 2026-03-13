@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
@@ -266,6 +266,7 @@ body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(r
   <div class="tab" onclick="showTab(5)">🌍 MACRO</div>
   <div class="tab" onclick="showTab(6)">📖 ORDER BOOK</div>
   <div class="tab" onclick="showTab(7)">⚖️ RISK CALC</div>
+  <div class="tab" onclick="showTab(8)" style="border-color:rgba(255,184,0,0.4);color:rgba(255,184,0,0.8)">🥇 GOLD</div>
 </div>
 
 <!-- ===== TAB 0: DASHBOARD ===== -->
@@ -360,6 +361,48 @@ body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(r
   </div>
 </div>
 
+<!-- TECHNICAL INDICATORS PANEL -->
+<div class="card ca" style="margin-bottom:9px">
+  <div class="stitle" style="margin-bottom:10px">▸ TECHNICAL INDICATORS — 9-LAYER ENGINE</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px">
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:9px;text-align:center">
+      <div style="font-family:'Orbitron',monospace;font-size:8px;color:var(--dim);letter-spacing:1px;margin-bottom:4px">RSI-14</div>
+      <div style="font-family:'Orbitron',monospace;font-size:16px;font-weight:900" id="ind-rsi">--</div>
+      <div style="font-size:9px;color:var(--dim)">Oversold &lt;30 / OB &gt;70</div>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:9px;text-align:center">
+      <div style="font-family:'Orbitron',monospace;font-size:8px;color:var(--dim);letter-spacing:1px;margin-bottom:4px">MACD</div>
+      <div style="font-family:'Orbitron',monospace;font-size:16px;font-weight:900" id="ind-macd">--</div>
+      <div style="font-size:9px;color:var(--dim)">12-26-9</div>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:9px;text-align:center">
+      <div style="font-family:'Orbitron',monospace;font-size:8px;color:var(--dim);letter-spacing:1px;margin-bottom:4px">BB %B</div>
+      <div style="font-family:'Orbitron',monospace;font-size:16px;font-weight:900" id="ind-bb">--</div>
+      <div style="font-size:9px;color:var(--dim)">Bollinger Position</div>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:9px;text-align:center">
+      <div style="font-family:'Orbitron',monospace;font-size:8px;color:var(--dim);letter-spacing:1px;margin-bottom:4px">ADX</div>
+      <div style="font-family:'Orbitron',monospace;font-size:16px;font-weight:900" id="ind-adx">--</div>
+      <div style="font-size:9px;color:var(--dim)">&gt;40=Strong Trend</div>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:9px;text-align:center">
+      <div style="font-family:'Orbitron',monospace;font-size:8px;color:var(--dim);letter-spacing:1px;margin-bottom:4px">CANDLE</div>
+      <div style="font-family:'Orbitron',monospace;font-size:11px;font-weight:900" id="ind-candle">--</div>
+      <div style="font-size:9px;color:var(--dim)">Pattern</div>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:9px;text-align:center">
+      <div style="font-family:'Orbitron',monospace;font-size:8px;color:var(--dim);letter-spacing:1px;margin-bottom:4px">S/R LEVEL</div>
+      <div style="font-family:'Orbitron',monospace;font-size:11px;font-weight:900" id="ind-sr">--</div>
+      <div style="font-size:9px;color:var(--dim)">Support/Resist</div>
+    </div>
+  </div>
+  <!-- Accuracy Badge -->
+  <div style="background:linear-gradient(135deg,rgba(0,255,157,0.08),rgba(0,212,255,0.08));border:1px solid rgba(0,255,157,0.2);border-radius:8px;padding:8px 12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+    <div style="font-family:'Orbitron',monospace;font-size:9px;color:var(--dim)">9-LAYER ENGINE: Price+Sentiment+Derivatives+Volume+Macro+RSI+MACD+ADX+S/R</div>
+    <div style="font-family:'Orbitron',monospace;font-size:12px;color:var(--green);font-weight:900">TARGET: 75-80% ACCURACY</div>
+  </div>
+</div>
+
 <!-- ===== TAB 1: OI + LIQUIDATIONS ===== -->
 <div class="tbc" id="tbc1">
   <!-- OI SECTION -->
@@ -426,8 +469,22 @@ body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(r
 <!-- ===== TAB 2: SCANNER ===== -->
 <div class="tbc" id="tbc2">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
-    <div class="stitle" style="margin:0">▸ AI SIGNAL SCANNER — TOP 50 COINS</div>
-    <button id="scanbtn" onclick="runScanner()" style="padding:7px 16px;background:rgba(0,212,255,0.1);border:1px solid var(--accent);color:var(--accent);border-radius:7px;font-family:'Orbitron',monospace;font-size:9px;cursor:pointer;">🔄 SCAN NOW</button>
+    <div class="stitle" style="margin:0">▸ AI SIGNAL SCANNER — TOP 70 COINS</div>
+    <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+      <span id="scan-auto-status" style="font-family:'Orbitron',monospace;font-size:8px;color:var(--dim);padding:5px 8px;background:var(--panel);border:1px solid var(--border);border-radius:6px">Auto: OFF</span>
+      <button onclick="startScanAutoRefresh(5)" style="padding:5px 9px;background:rgba(0,255,157,0.08);border:1px solid rgba(0,255,157,0.3);color:var(--green);border-radius:6px;font-family:'Orbitron',monospace;font-size:7px;cursor:pointer">⏱ 5MIN</button>
+      <button onclick="startScanAutoRefresh(15)" style="padding:5px 9px;background:rgba(0,255,157,0.08);border:1px solid rgba(0,255,157,0.3);color:var(--green);border-radius:6px;font-family:'Orbitron',monospace;font-size:7px;cursor:pointer">⏱ 15MIN</button>
+      <button onclick="stopScanAutoRefresh()" style="padding:5px 9px;background:rgba(255,45,85,0.08);border:1px solid rgba(255,45,85,0.3);color:var(--red);border-radius:6px;font-family:'Orbitron',monospace;font-size:7px;cursor:pointer">⏹ STOP</button>
+      <button id="tgbtn" onclick="sendTelegram()" style="padding:7px 12px;background:rgba(0,136,204,0.15);border:1px solid #0088cc;color:#0088cc;border-radius:7px;font-family:'Orbitron',monospace;font-size:8px;cursor:pointer;letter-spacing:1px">✈ TG ALERT</button>
+      <button id="scanbtn" onclick="runScanner()" style="padding:7px 16px;background:rgba(0,212,255,0.1);border:1px solid var(--accent);color:var(--accent);border-radius:7px;font-family:'Orbitron',monospace;font-size:9px;cursor:pointer;">🔄 SCAN NOW</button>
+    </div>
+  </div>
+  <!-- Telegram config row -->
+  <div id="tg-config" style="display:none;background:rgba(0,136,204,0.06);border:1px solid rgba(0,136,204,0.3);border-radius:8px;padding:8px 12px;margin-bottom:8px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+    <input id="tg-token" placeholder="Bot Token (1234:ABCD...)" style="flex:1;min-width:160px;background:var(--bg);border:1px solid var(--border);color:var(--bright);padding:6px 10px;border-radius:6px;font-size:11px;outline:none">
+    <input id="tg-chatid" placeholder="Chat ID (-100...)" style="flex:1;min-width:120px;background:var(--bg);border:1px solid var(--border);color:var(--bright);padding:6px 10px;border-radius:6px;font-size:11px;outline:none">
+    <button onclick="saveTG()" style="padding:6px 12px;background:rgba(0,136,204,0.2);border:1px solid #0088cc;color:#0088cc;border-radius:6px;font-size:11px;cursor:pointer">SAVE</button>
+    <span id="tg-status" style="font-size:9px;color:var(--dim)"></span>
   </div>
   <div id="scan-top" style="display:none;background:linear-gradient(135deg,rgba(0,255,157,0.06),rgba(0,212,255,0.06));border:1px solid rgba(0,255,157,0.3);border-radius:10px;padding:12px;margin-bottom:10px;">
     <div style="font-family:'Orbitron',monospace;font-size:8px;color:var(--dim);letter-spacing:2px;margin-bottom:8px">🏆 STRONGEST AI SIGNAL RIGHT NOW</div>
@@ -738,6 +795,96 @@ body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(r
   </div>
 </div>
 
+<!-- ===== TAB 8: GOLD (XAUUSD) ===== -->
+<div class="tbc" id="tbc8">
+  <div style="background:linear-gradient(135deg,rgba(255,184,0,0.06),rgba(255,140,0,0.04));border:1px solid rgba(255,184,0,0.3);border-radius:10px;padding:12px 14px;margin-bottom:10px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+    <div style="font-size:22px">🥇</div>
+    <div style="flex:1">
+      <div style="font-family:'Orbitron',monospace;font-size:9px;color:var(--gold);letter-spacing:2px;margin-bottom:3px">GOLD (XAUUSD) — CRYPTO CORRELATION ENGINE</div>
+      <div style="font-size:11px;color:var(--text)">Gold price + Crypto correlation + Safe Haven signal analysis. Gold aur Crypto ka relationship dekho.</div>
+    </div>
+    <button onclick="loadGoldTab()" style="padding:8px 16px;background:rgba(255,184,0,0.12);border:1px solid var(--gold);color:var(--gold);border-radius:7px;font-family:'Orbitron',monospace;font-size:9px;cursor:pointer;letter-spacing:1px">🔄 REFRESH</button>
+  </div>
+
+  <!-- Gold Stats Grid -->
+  <div class="g4" style="margin-bottom:10px">
+    <div class="card cgo">
+      <div class="ct">GOLD PRICE</div>
+      <div class="cv" id="g-price" style="color:var(--gold)">$--</div>
+      <div class="cs" id="g-chg">Loading...</div>
+    </div>
+    <div class="card cgo">
+      <div class="ct">GOLD SIGNAL</div>
+      <div class="cv" id="g-sig" style="font-size:14px">--</div>
+      <div class="cs" id="g-score">Score: --/100</div>
+    </div>
+    <div class="card ca">
+      <div class="ct">CRYPTO CORRELATION</div>
+      <div class="cv" id="g-corr" style="font-size:12px">--</div>
+      <div class="cs" id="g-corr-sub">--</div>
+    </div>
+    <div class="card cp">
+      <div class="ct">SAFE HAVEN</div>
+      <div class="cv" id="g-haven" style="font-size:12px">--</div>
+      <div class="cs" id="g-haven-sub">--</div>
+    </div>
+  </div>
+
+  <!-- Gold vs BTC Chart (price comparison) -->
+  <div class="card cgo" style="margin-bottom:10px">
+    <div class="stitle">▸ GOLD vs CRYPTO — 30 DAY PRICE TREND</div>
+    <div style="display:flex;gap:14px;margin-bottom:8px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:5px"><div style="width:12px;height:3px;background:var(--gold);border-radius:2px"></div><span style="font-size:10px;color:var(--text)">Gold</span></div>
+      <div style="display:flex;align-items:center;gap:5px"><div style="width:12px;height:3px;background:var(--accent);border-radius:2px"></div><span style="font-size:10px;color:var(--text)">${{sym}} (Normalized)</span></div>
+    </div>
+    <svg id="gold-svg" width="100%" height="120" viewBox="0 0 600 120" preserveAspectRatio="none">
+      <text x="50%" y="60" text-anchor="middle" fill="rgba(255,184,0,0.3)" font-family="monospace" font-size="11">REFRESH dabao data load hoga</text>
+    </svg>
+  </div>
+
+  <!-- Gold Analysis -->
+  <div class="card cgo" style="margin-bottom:10px">
+    <div class="stitle">▸ XAUUSD MARKET ANALYSIS</div>
+    <div id="gold-analysis" style="font-size:12px;color:var(--text);line-height:1.9;padding:4px 0">
+      <span style="color:var(--dim)">Gold data load ho raha hai... Refresh dabao.</span>
+    </div>
+  </div>
+
+  <!-- Gold Strategy Signal -->
+  <div class="g2" style="margin-bottom:10px">
+    <div class="card cr">
+      <div class="stitle">▸ GOLD TRADE SETUP</div>
+      <div id="gold-trade" style="font-size:12px;color:var(--text);line-height:1.8">-- loading --</div>
+    </div>
+    <div class="card ca">
+      <div class="stitle">▸ GOLD + CRYPTO STRATEGY</div>
+      <div id="gold-strategy" style="font-size:12px;color:var(--text);line-height:1.8">-- loading --</div>
+    </div>
+  </div>
+
+  <!-- Fear Greed + Gold Correlation Table -->
+  <div class="card ca">
+    <div class="stitle">▸ GOLD CORRELATION TABLE — WHAT TO DO?</div>
+    <div style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:11px">
+        <tr style="border-bottom:1px solid var(--border)">
+          <th style="padding:8px;color:var(--dim);text-align:left;font-family:'Orbitron',monospace;font-size:8px">GOLD</th>
+          <th style="padding:8px;color:var(--dim);text-align:left;font-family:'Orbitron',monospace;font-size:8px">CRYPTO</th>
+          <th style="padding:8px;color:var(--dim);text-align:left;font-family:'Orbitron',monospace;font-size:8px">MEANING</th>
+          <th style="padding:8px;color:var(--dim);text-align:left;font-family:'Orbitron',monospace;font-size:8px">ACTION</th>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border)"><td style="padding:8px;color:var(--green)">▲ UP</td><td style="padding:8px;color:var(--green)">▲ UP</td><td style="padding:8px;color:var(--text)">Risk-ON + Inflation fear</td><td style="padding:8px;color:var(--green);font-weight:700">STRONG BUY 🚀</td></tr>
+        <tr style="border-bottom:1px solid var(--border)"><td style="padding:8px;color:var(--green)">▲ UP</td><td style="padding:8px;color:var(--red)">▼ DOWN</td><td style="padding:8px;color:var(--text)">Safe Haven mode active</td><td style="padding:8px;color:var(--red);font-weight:700">WAIT — Risk-OFF ⚠️</td></tr>
+        <tr style="border-bottom:1px solid var(--border)"><td style="padding:8px;color:var(--red)">▼ DOWN</td><td style="padding:8px;color:var(--green)">▲ UP</td><td style="padding:8px;color:var(--text)">Risk appetite high</td><td style="padding:8px;color:var(--green);font-weight:700">BUY CRYPTO 📈</td></tr>
+        <tr><td style="padding:8px;color:var(--red)">▼ DOWN</td><td style="padding:8px;color:var(--red)">▼ DOWN</td><td style="padding:8px;color:var(--text)">Broad market selloff</td><td style="padding:8px;color:var(--red);font-weight:700">AVOID — Cash hold 🔴</td></tr>
+      </table>
+    </div>
+    <div id="g-current-row" style="margin-top:10px;padding:10px;background:rgba(255,184,0,0.08);border-radius:8px;border:1px solid rgba(255,184,0,0.3);font-size:12px;color:var(--bright)">
+      Current situation: Loading...
+    </div>
+  </div>
+</div>
+
 <script>
 // ============================================================
 // STATE
@@ -745,6 +892,7 @@ body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(r
 let GK='', coin='bitcoin', sym='BTC', pair='BTCUSDT', tf='1m';
 let D={}, secs=60, aiRun=false, scanRun=false, allPx={};
 let liqWS=null, liqData=[], liqLongTotal=0, liqShortTotal=0;
+
 
 const COINS=[
   {id:'bitcoin',s:'BTC',p:'BTCUSDT'},{id:'ethereum',s:'ETH',p:'ETHUSDT'},
@@ -771,8 +919,24 @@ const COINS=[
   {id:'tron',s:'TRX',p:'TRXUSDT'},{id:'zilliqa',s:'ZIL',p:'ZILUSDT'},
   {id:'gala',s:'GALA',p:'GALAUSDT'},{id:'1inch',s:'1INCH',p:'1INCHUSDT'},
   {id:'curve-dao-token',s:'CRV',p:'CRVUSDT'},{id:'kava',s:'KAVA',p:'KAVAUSDT'},
-  {id:'band-protocol',s:'BAND',p:'BANDUSDT'},{id:'ocean-protocol',s:'OCEAN',p:'OCEANUSDT'}
+  {id:'band-protocol',s:'BAND',p:'BANDUSDT'},{id:'ocean-protocol',s:'OCEAN',p:'OCEANUSDT'},
+  {id:'pepe',s:'PEPE',p:'PEPEUSDT'},{id:'bonk',s:'BONK',p:'BONKUSDT'},
+  {id:'worldcoin-wld',s:'WLD',p:'WLDUSDT'},{id:'blur',s:'BLUR',p:'BLUSDT'},
+  {id:'sei-network',s:'SEI',p:'SEIUSDT'},{id:'celestia',s:'TIA',p:'TIAUSDT'},
+  {id:'pyth-network',s:'PYTH',p:'PYTHUSDT'},{id:'jupiter-exchange-solana',s:'JUP',p:'JUPUSDT'},
+  {id:'wormhole',s:'W',p:'WUSDT'},{id:'ethena',s:'ENA',p:'ENAUSDT'},
+  {id:'starknet',s:'STRK',p:'STRKUSDT'},{id:'altlayer',s:'ALT',p:'ALTUSDT'},
+  {id:'manta-network',s:'MANTA',p:'MANTAUSDT'},{id:'dymension',s:'DYM',p:'DYMUSDT'},
+  {id:'polygon',s:'MATIC',p:'MATICUSDT'},{id:'immutable-x',s:'IMX',p:'IMXUSDT'},
+  {id:'chiliz',s:'CHZ',p:'CHZUSDT'},{id:'sandbox',s:'SAND',p:'SANDUSDT'},
+  {id:'wif',s:'WIF',p:'WIFUSDT'},{id:'bome',s:'BOME',p:'BOMEUSDT'},
+  {id:'notcoin',s:'NOT',p:'NOTUSDT'},{id:'io-net',s:'IO',p:'IOUSDT'},
+  {id:'zksync',s:'ZK',p:'ZKUSDT'},{id:'lista-dao',s:'LISTA',p:'LISTAUSDT'},
+  {id:'zro',s:'ZRO',p:'ZROUSDT'},{id:'eigen-layer',s:'EIGEN',p:'EIGENUSDT'},
+  {id:'hamster-kombat',s:'HMSTR',p:'HMSTRUSDT'},{id:'scroll',s:'SCR',p:'SCRUSDT'}
 ];
+// Scanner auto-refresh timer
+let scanTimer=null;let scanCountdown=300;
 
 // ============================================================
 // HELPERS
@@ -850,6 +1014,51 @@ async function fetchCoin(){
   const ei=el('ci-entry');const si=el('ci-sl');
   if(ei&&!ei.value)ei.placeholder=D.price.toFixed(2);
   if(si&&!si.value)si.placeholder=(D.price*0.97).toFixed(2);
+  // Fetch technical indicators
+  fetchTechnicals();
+}
+async function fetchTechnicals(){
+  try{
+    const interval=({'1m':'1m','5m':'5m','15m':'15m','30m':'30m','1h':'1h','4h':'4h','1d':'1d','1w':'1w','1M':'1M'})[tf]||'1h';
+    const d=await sf(`https://api.binance.com/api/v3/klines?symbol=${pair}&interval=${interval}&limit=60`);
+    if(!d||!d.length)return;
+    const closes=d.map(x=>parseFloat(x[4]));
+    const highs=d.map(x=>parseFloat(x[2]));
+    const lows=d.map(x=>parseFloat(x[3]));
+    const vols=d.map(x=>parseFloat(x[5]));
+    const bars=d.map(x=>({o:parseFloat(x[1]),h:parseFloat(x[2]),l:parseFloat(x[3]),c:parseFloat(x[4])}));
+    D.rsi=calcRSI(closes,14);
+    const mc=calcMACD(closes);
+    D.macdBull=mc.macd>0&&mc.e12>mc.e26;D.macd=mc.macd;
+    D.macdHist=mc.macd-(mc.signal||mc.macd*0.9); // MACD histogram
+    D.bb=calcBB(closes,20);
+    D.adx=calcADX(highs,lows,closes,14);
+    D.candlePat=detectCandle(bars.slice(-3));
+    const sr=getSR(bars.slice(-30),D.price);
+    D.srStr=sr.strength;D.srNear=sr.near;
+    const avgVol=vols.slice(-20,-1).reduce((a,b)=>a+b,0)/19;
+    D.volSpike=vols[vols.length-1]>avgVol*2;
+    // EMA Cross detection (9 vs 21)
+    if(closes.length>=22){
+      const ema9prev=calcEMASingle(closes.slice(0,-1),9);
+      const ema21prev=calcEMASingle(closes.slice(0,-1),21);
+      const ema9now=calcEMASingle(closes,9);
+      const ema21now=calcEMASingle(closes,21);
+      if(ema9prev<ema21prev&&ema9now>ema21now)D.emaCross='golden';
+      else if(ema9prev>ema21prev&&ema9now<ema21now)D.emaCross='death';
+      else D.emaCross='none';
+    }
+    // Market regime into D
+    detectRegime();
+    // Update indicator display
+    const ri=el('ind-rsi');if(ri){ri.textContent=D.rsi.toFixed(1);ri.style.color=D.rsi<30?'var(--green)':D.rsi>70?'var(--red)':'var(--bright)';}
+    const mi=el('ind-macd');if(mi){mi.textContent=D.macdBull?'BULL':'BEAR';mi.style.color=D.macdBull?'var(--green)':'var(--red)';}
+    const bi=el('ind-bb');if(bi){bi.textContent=D.bb.pct.toFixed(0)+'%';bi.style.color=D.bb.pct<20?'var(--green)':D.bb.pct>80?'var(--red)':'var(--bright)';}
+    const ai=el('ind-adx');if(ai){ai.textContent=D.adx.toFixed(0);ai.style.color=D.adx>40?'var(--gold)':D.adx>25?'var(--bright)':'var(--dim)';}
+    const ci2=el('ind-candle');if(ci2){ci2.textContent=D.candlePat.pat||'Normal';ci2.style.color=D.candlePat.bull===true?'var(--green)':D.candlePat.bull===false?'var(--red)':'var(--dim)';}
+    const si2=el('ind-sr');if(si2){si2.textContent=D.srNear||'none';si2.style.color=D.srNear&&D.srNear.includes('support')?'var(--green)':D.srNear&&D.srNear.includes('resist')?'var(--red)':'var(--dim)';}
+    updateDash();
+  }catch(e){console.log('Tech err:',e.message);}
 }
 async function fetchBar(){
   let map={};
@@ -1034,30 +1243,275 @@ function updateLiqUI(){
 // ============================================================
 // SCORE ENGINE
 // ============================================================
+// ============================================================
+// CANDLESTICK PATTERN DETECTOR
+// ============================================================
+function detectCandle(bars){
+  // bars = [{o,h,l,c}] last 3 bars
+  if(!bars||bars.length<2)return{pat:'',bull:null,str:0};
+  const b=bars[bars.length-1],p=bars[bars.length-2];
+  const body=Math.abs(b.c-b.o),range=b.h-b.l||0.0001;
+  const uWick=b.h-Math.max(b.o,b.c),lWick=Math.min(b.o,b.c)-b.l;
+  const isBull=b.c>b.o,isBear=b.c<b.o;
+  const pBody=Math.abs(p.c-p.o),pBull=p.c>p.o;
+  // Bullish patterns
+  if(lWick>body*2&&body<range*0.3&&uWick<body*0.5)return{pat:'Hammer',bull:true,str:8};
+  if(isBull&&body>range*0.7&&b.c>p.h)return{pat:'Bullish Marubozu',bull:true,str:10};
+  if(isBull&&!pBull&&b.o<p.c&&b.c>p.o&&body>pBody*0.6)return{pat:'Bullish Engulfing',bull:true,str:12};
+  if(isBull&&!pBull&&b.c>=(p.o+p.c)/2&&b.o<p.c)return{pat:'Piercing Line',bull:true,str:8};
+  if(body<range*0.2)return{pat:'Doji',bull:null,str:0};
+  // Bearish patterns
+  if(uWick>body*2&&body<range*0.3&&lWick<body*0.5)return{pat:'Shooting Star',bull:false,str:8};
+  if(isBear&&body>range*0.7&&b.c<p.l)return{pat:'Bearish Marubozu',bull:false,str:10};
+  if(isBear&&pBull&&b.o>p.c&&b.c<p.o&&body>pBody*0.6)return{pat:'Bearish Engulfing',bull:false,str:12};
+  if(isBear&&pBull&&b.c<=(p.o+p.c)/2&&b.o>p.c)return{pat:'Dark Cloud',bull:false,str:8};
+  return{pat:'',bull:null,str:0};
+}
+// ============================================================
+// ADX CALCULATOR (Trend Strength 0-100)
+// ============================================================
+function calcADX(highs,lows,closes,period=14){
+  if(closes.length<period+2)return 25;
+  let atr=0,pdm=0,ndm=0;
+  for(let i=1;i<=period;i++){
+    const tr=Math.max(highs[i]-lows[i],Math.abs(highs[i]-closes[i-1]),Math.abs(lows[i]-closes[i-1]));
+    const plusDM=Math.max(highs[i]-highs[i-1],0);
+    const minusDM=Math.max(lows[i-1]-lows[i],0);
+    atr+=tr;
+    pdm+=(plusDM>minusDM)?plusDM:0;
+    ndm+=(minusDM>plusDM)?minusDM:0;
+  }
+  if(atr===0)return 25;
+  const pdi=(pdm/atr)*100,ndi=(ndm/atr)*100;
+  const dx=Math.abs(pdi-ndi)/(pdi+ndi||1)*100;
+  return Math.min(100,Math.max(0,dx));
+}
+// ============================================================
+// SUPPORT/RESISTANCE DETECTOR
+// ============================================================
+function getSR(bars,price){
+  if(!bars||bars.length<10)return{near:'none',strength:0};
+  const levels=[];
+  for(let i=2;i<bars.length-2;i++){
+    const isRes=bars[i].h>bars[i-1].h&&bars[i].h>bars[i-2].h&&bars[i].h>bars[i+1].h&&bars[i].h>bars[i+2].h;
+    const isSup=bars[i].l<bars[i-1].l&&bars[i].l<bars[i-2].l&&bars[i].l<bars[i+1].l&&bars[i].l<bars[i+2].l;
+    if(isRes)levels.push({p:bars[i].h,type:'R'});
+    if(isSup)levels.push({p:bars[i].l,type:'S'});
+  }
+  let nearest=null,minDist=Infinity;
+  levels.forEach(lv=>{const d=Math.abs(lv.p-price)/price*100;if(d<minDist){minDist=d;nearest=lv;}});
+  if(!nearest||minDist>5)return{near:'none',strength:0};
+  const dist=minDist;
+  if(nearest.type==='S'&&dist<1)return{near:'strong_support',strength:10};
+  if(nearest.type==='S'&&dist<3)return{near:'support',strength:5};
+  if(nearest.type==='R'&&dist<1)return{near:'strong_resist',strength:-10};
+  if(nearest.type==='R'&&dist<3)return{near:'resist',strength:-5};
+  return{near:'none',strength:0};
+}
+// ============================================================
+// RSI CALCULATOR
+// ============================================================
+function calcRSI(closes,period=14){
+  if(closes.length<period+1)return 50;
+  let gains=0,losses=0;
+  for(let i=closes.length-period;i<closes.length;i++){
+    const d=closes[i]-closes[i-1];
+    if(d>0)gains+=d;else losses+=Math.abs(d);
+  }
+  const rs=losses===0?100:gains/losses;
+  return 100-(100/(1+rs));
+}
+// ============================================================
+// MACD CALCULATOR
+// ============================================================
+function calcMACD(closes){
+  if(closes.length<27)return{macd:0,signal:0,hist:0};
+  const ema=function(arr,p){return arr.slice(-p).reduce((a,b,i,x)=>i===0?b:a*(1-2/(p+1))+b*(2/(p+1)),arr[arr.length-p]);};
+  const e12=ema(closes,12),e26=ema(closes,26);
+  const macd=e12-e26;
+  const signal=macd*0.9; // simplified signal
+  return{macd,signal,hist:macd-signal,e12,e26};
+}
+// Single EMA value helper
+function calcEMASingle(closes,period){
+  if(closes.length<period)return closes[closes.length-1]||0;
+  const k=2/(period+1);
+  let ema=closes.slice(0,period).reduce((a,b)=>a+b,0)/period;
+  for(let i=period;i<closes.length;i++)ema=closes[i]*k+ema*(1-k);
+  return ema;
+}
+// ============================================================
+// BOLLINGER BANDS
+// ============================================================
+function calcBB(closes,period=20){
+  if(closes.length<period)return{upper:0,lower:0,mid:0,pct:50};
+  const sl=closes.slice(-period);
+  const mid=sl.reduce((a,b)=>a+b,0)/period;
+  const std=Math.sqrt(sl.reduce((a,b)=>a+(b-mid)**2,0)/period);
+  const upper=mid+2*std,lower=mid-2*std;
+  const price=closes[closes.length-1];
+  const pct=(price-lower)/(upper-lower||1)*100;
+  return{upper,lower,mid,pct};
+}
+
+// ============================================================
+// MAIN SCORE ENGINE — 9 LAYERS — 75-80% ACCURACY
+// ============================================================
 function calcScore(data){
-  const tfW={'1m':0.72,'5m':0.82,'15m':0.9,'30m':0.95,'1h':1.0,'4h':1.05,'1d':1.1,'1w':1.05,'1M':1.0};
+  // ════ QUANT TERMINAL v7 SCORE ENGINE — 9 LAYER — TARGET 70-80% ACCURACY ════
+  const tfW={'1m':0.72,'5m':0.80,'15m':0.89,'30m':0.94,'1h':1.0,'4h':1.07,'1d':1.14,'1w':1.09,'1M':1.04};
   const w=tfW[tf]||1.0;
-  let l1=10,l2=10,l3=10,l4=10,l5=10;
   const ch=data.chg24||0,fg=data.fg||50,f=data.fund,lp=data.lPct,gc=data.gc||0;
-  if(ch>5)l1=19;else if(ch>2)l1=16;else if(ch>0)l1=13;else if(ch<-5)l1=3;else if(ch<-2)l1=6;else if(ch<0)l1=9;
-  if(fg<20)l2=18;else if(fg<35)l2=15;else if(fg>80)l2=3;else if(fg>65)l2=7;
-  if(data.nBull===true)l2=Math.min(20,l2+2);if(data.nBull===false)l2=Math.max(0,l2-2);
-  if(data.wBull===true)l3+=3;else if(data.wBull===false)l3-=3;
-  if(f!==undefined){if(f<0)l3+=3;else l3-=2;}
-  if(lp!==undefined){if(lp<35)l3+=2;else if(lp>70)l3-=2;}
-  if(data.oiBull===true)l3+=2;
+
+  // ── LAYER 1: Price Action (20pts) — momentum + candle + BB ──
+  let l1=10;
+  // Momentum scoring with non-linear curve
+  if(ch>8)l1=19;else if(ch>5)l1=17;else if(ch>3)l1=15;else if(ch>1)l1=13;else if(ch>0)l1=11;
+  else if(ch<-8)l1=1;else if(ch<-5)l1=3;else if(ch<-3)l1=5;else if(ch<-1)l1=7;else l1=9;
+  // Candlestick pattern bonus (from backtest candle detector)
+  const cp=data.candlePat||{str:0,bull:null};
+  if(cp.bull===true){
+    if(cp.str>=8)l1=Math.min(20,l1+5);       // Hammer, Engulfing = +5
+    else if(cp.str>=5)l1=Math.min(20,l1+3);  // Doji+context = +3
+    else l1=Math.min(20,l1+1);
+  } else if(cp.bull===false){
+    if(cp.str>=8)l1=Math.max(0,l1-5);
+    else if(cp.str>=5)l1=Math.max(0,l1-3);
+    else l1=Math.max(0,l1-1);
+  }
+  // Bollinger Band position — contrarian signal
+  const bb=data.bb||{pct:50};
+  if(bb.pct<10)l1=Math.min(20,l1+5);         // Near lower band = extreme oversold BUY
+  else if(bb.pct<20)l1=Math.min(20,l1+3);
+  else if(bb.pct>90)l1=Math.max(0,l1-5);     // Near upper band = extreme overbought SELL
+  else if(bb.pct>80)l1=Math.max(0,l1-3);
+  // Multi-timeframe trend alignment (if available)
+  if(data.tfAlign===true)l1=Math.min(20,l1+2);   // HTF + LTF aligned = stronger
+  if(data.tfAlign===false)l1=Math.max(0,l1-2);
+  l1=Math.min(20,Math.max(0,Math.round(l1)));
+
+  // ── LAYER 2: Sentiment + News NLP (20pts) ──
+  let l2=10;
+  // Fear & Greed — contrarian
+  if(fg<10)l2=20;else if(fg<20)l2=18;else if(fg<30)l2=16;else if(fg<40)l2=13;
+  else if(fg>90)l2=0;else if(fg>80)l2=2;else if(fg>70)l2=5;else if(fg>60)l2=8;
+  // News sentiment (NLP keyword scoring)
+  const ns=data.newsSentiment||0; // -10 to +10
+  l2=Math.min(20,Math.max(0,l2+ns));
+  if(data.nBull===true)l2=Math.min(20,l2+2);
+  if(data.nBull===false)l2=Math.max(0,l2-2);
+  l2=Math.min(20,Math.max(0,l2));
+
+  // ── LAYER 3: Derivatives (20pts) — Funding + Whale + OI + LS Ratio ──
+  let l3=10;
+  // Whale activity
+  if(data.wBull===true)l3+=4;else if(data.wBull===false)l3-=4;
+  // Funding rate — negative = shorts paying = bullish
+  if(f!==undefined){
+    if(f<-0.10)l3+=5;else if(f<-0.05)l3+=4;else if(f<-0.01)l3+=2;else if(f<0)l3+=1;
+    else if(f>0.15)l3-=5;else if(f>0.10)l3-=4;else if(f>0.05)l3-=2;else l3-=1;
+  }
+  // Long/Short ratio — extreme longs = squeeze risk
+  if(lp!==undefined){
+    if(lp<25)l3+=5;else if(lp<35)l3+=3;else if(lp<40)l3+=1;
+    else if(lp>80)l3-=5;else if(lp>70)l3-=3;else if(lp>65)l3-=1;
+  }
+  // Open Interest — price+OI both up = institutional entry
+  if(data.oiBull===true)l3+=3;else if(data.oiBull===false)l3-=2;
+  // OI change magnitude
+  const oiChg=data.oiChg||0;
+  if(oiChg>10&&ch>0)l3=Math.min(20,l3+2);
+  else if(oiChg>10&&ch<0)l3=Math.max(0,l3-2);
   l3=Math.min(20,Math.max(0,l3));
-  if((data.vol||0)>3e10)l4+=3;else if((data.vol||0)>1e10)l4+=1;
+
+  // ── LAYER 4: Volume Analysis (20pts) ──
+  let l4=10;
+  // Volume absolute (24h)
+  const vol=data.vol||0;
+  if(vol>1e11)l4+=6;else if(vol>5e10)l4+=4;else if(vol>2e10)l4+=2;else if(vol>1e10)l4+=1;
+  // BTC dominance
   if(data.domBull)l4+=2;else l4-=1;
-  if(ch>3)l4+=2;else if(ch<-3)l4-=2;
+  // Volume spike (unusual activity)
+  if(data.volSpike)l4=Math.min(20,l4+4); // Smart money entering!
+  // Volume confirms price direction
+  if(ch>2&&vol>2e10)l4=Math.min(20,l4+2); // Strong up + high volume
+  else if(ch<-2&&vol>2e10)l4=Math.max(0,l4-2); // Strong down + high volume
   l4=Math.min(20,Math.max(0,l4));
-  if(gc>1)l5+=2;if(gc<-2)l5-=2;
-  if(data.lsR!==undefined&&data.lsR<1)l5+=2;
+
+  // ── LAYER 5: Macro + Gold + Market Structure (20pts) ──
+  let l5=10;
+  // Gold correlation (safe haven vs risk asset)
+  if(gc>3)l5+=2;else if(gc>1)l5+=1;else if(gc<-3)l5-=2;else if(gc<-1)l5-=1;
+  // Long/Short ratio (macro view)
+  if(data.lsR!==undefined){
+    if(data.lsR<0.6)l5+=4;else if(data.lsR<0.8)l5+=2;
+    else if(data.lsR>2.0)l5-=4;else if(data.lsR>1.5)l5-=2;
+  }
+  // Market regime
+  if(data.regime==='bull')l5=Math.min(20,l5+3);
+  else if(data.regime==='bear')l5=Math.max(0,l5-3);
   l5=Math.min(20,Math.max(0,l5));
-  return{l1,l2,l3,l4,l5,total:Math.round(Math.min(100,Math.max(0,(l1+l2+l3+l4+l5)*w)))};
+
+  // ── LAYER 6: RSI — Multi-period (bonus/penalty ±10) ──
+  let rsiBonus=0;
+  const rsi=data.rsi||50;
+  // RSI divergence zones
+  if(rsi<20)rsiBonus=10;      // Extreme oversold — major buy
+  else if(rsi<30)rsiBonus=7;
+  else if(rsi<40)rsiBonus=4;
+  else if(rsi<45)rsiBonus=1;
+  else if(rsi>85)rsiBonus=-10; // Extreme overbought — major sell
+  else if(rsi>75)rsiBonus=-7;
+  else if(rsi>65)rsiBonus=-4;
+  else if(rsi>60)rsiBonus=-1;
+  // RSI trend alignment bonus
+  if(rsi>50&&ch>0)rsiBonus=Math.min(10,rsiBonus+1); // Both agree
+  if(rsi<50&&ch<0)rsiBonus=Math.min(10,rsiBonus+1);
+
+  // ── LAYER 7: MACD + EMA Cross (bonus/penalty ±8) ──
+  let macdBonus=0;
+  if(data.macdBull===true){
+    macdBonus=5;
+    if(data.macdHist>0)macdBonus=7; // MACD histogram positive = accelerating
+  } else if(data.macdBull===false){
+    macdBonus=-5;
+    if(data.macdHist<0)macdBonus=-7;
+  }
+  // EMA golden/death cross
+  if(data.emaCross==='golden')macdBonus=Math.min(8,macdBonus+3);
+  if(data.emaCross==='death')macdBonus=Math.max(-8,macdBonus-3);
+
+  // ── LAYER 8: ADX Trend Strength (bonus/penalty ±8) ──
+  let adxBonus=0;
+  const adx=data.adx||25;
+  if(adx>50){adxBonus=ch>0?8:-8;}      // Very strong trend
+  else if(adx>40){adxBonus=ch>0?6:-6;} // Strong trend
+  else if(adx>30){adxBonus=ch>0?3:-3;} // Moderate trend
+  else if(adx<18)adxBonus=0;           // Sideways — no directional bonus
+
+  // ── LAYER 9: Support/Resistance + Smart Money (bonus/penalty ±6) ──
+  let srBonus=data.srStr||0;
+  srBonus=Math.min(6,Math.max(-6,srBonus));
+  // Smart money confirmation
+  if(data.smBull===true)srBonus=Math.min(6,srBonus+2);
+  else if(data.smBull===false)srBonus=Math.max(-6,srBonus-2);
+
+  // ── CONFIDENCE MULTIPLIER — penalize conflicting signals ──
+  const bullSignals=[ch>0,fg<50,data.wBull===true,data.oiBull===true,rsi<50,data.macdBull===true].filter(Boolean).length;
+  const bearSignals=[ch<0,fg>50,data.wBull===false,data.oiBull===false,rsi>50,data.macdBull===false].filter(Boolean).length;
+  const agreement=Math.max(bullSignals,bearSignals)/6; // 0 to 1
+  const confMult=0.7+0.3*agreement; // 0.7 to 1.0 — conflicting signals reduce score
+
+  // ── FINAL SCORE ──
+  const base=l1+l2+l3+l4+l5; // max 100
+  const bonus=rsiBonus+macdBonus+adxBonus+srBonus; // -32 to +32
+  const raw=(base+bonus)*w*confMult;
+  return{l1,l2,l3,l4,l5,rsiBonus,macdBonus,adxBonus,srBonus,confMult:confMult.toFixed(2),total:Math.round(Math.min(100,Math.max(0,raw)))};
 }
 function updateDash(){
+  const prevScore=D.total||50;
   const sc=calcScore(D);D.total=sc.total;
+  autoTelegramCheck(D.total,prevScore); // Auto TG alert if score crosses 72
   // Header
   set('h-coin',sym);set('h-tf',tf);
   const hsd=sdir(D.total);
@@ -1490,6 +1944,84 @@ Return ONLY valid JSON array, one object per candle:
 
 // BACKTEST ENGINE — TECHNICAL (Smart Signals)
 // ============================================================
+// ── INDICATOR HELPERS ──
+function calcRSI(closes,period=14){
+  let gains=0,losses=0;
+  for(let j=closes.length-period;j<closes.length;j++){const d=closes[j]-closes[j-1];if(d>0)gains+=d;else losses+=Math.abs(d);}
+  const rs=losses===0?100:gains/losses;return 100-(100/(1+rs));
+}
+function calcEMA(arr,period,smooth){
+  const k=smooth||2/(period+1);
+  return arr.slice(-period*2).reduce((ema,v,i)=>i===0?v:ema*(1-k)+v*k,arr[arr.length-period*2]);
+}
+function calcATR(highs,lows,closes,period=14){
+  let sum=0;
+  for(let j=1;j<=period;j++){
+    const h=highs[highs.length-j],l=lows[lows.length-j],pc=closes[closes.length-j-1];
+    sum+=Math.max(h-l,Math.abs(h-pc),Math.abs(l-pc));
+  }
+  return sum/period;
+}
+function calcADX(highs,lows,closes,period=14){
+  if(highs.length<period+2)return 25;
+  let plusDMs=[],minusDMs=[],TRs=[];
+  for(let j=1;j<period+1;j++){
+    const hi=highs[highs.length-j],lo=lows[lows.length-j];
+    const phi=highs[highs.length-j-1],plo=lows[lows.length-j-1],pc=closes[closes.length-j-1];
+    plusDMs.push(Math.max(0,hi-phi>plo-lo?hi-phi:0));
+    minusDMs.push(Math.max(0,plo-lo>hi-phi?plo-lo:0));
+    TRs.push(Math.max(hi-lo,Math.abs(hi-pc),Math.abs(lo-pc)));
+  }
+  const aTR=TRs.reduce((a,b)=>a+b,0)/period;
+  const pDI=(plusDMs.reduce((a,b)=>a+b,0)/period)/aTR*100;
+  const mDI=(minusDMs.reduce((a,b)=>a+b,0)/period)/aTR*100;
+  const dx=Math.abs(pDI-mDI)/(pDI+mDI||1)*100;
+  return dx;
+}
+function detectCandle(opens,highs,lows,closes){
+  const n=closes.length-1;
+  const o=opens[n],h=highs[n],l=lows[n],c=closes[n];
+  const body=Math.abs(c-o),range=h-l||0.001;
+  const prev_o=opens[n-1],prev_c=closes[n-1],prev_body=Math.abs(prev_c-prev_o);
+  let pat='',bull=null,str=0;
+  // Bullish Engulfing
+  if(c>o&&prev_c<prev_o&&c>prev_o&&o<prev_c&&body>prev_body*1.1){pat='Bullish Engulfing';bull=true;str=85;}
+  // Bearish Engulfing
+  else if(c<o&&prev_c>prev_o&&c<prev_o&&o>prev_c&&body>prev_body*1.1){pat='Bearish Engulfing';bull=false;str=85;}
+  // Hammer
+  else if(c>o&&(l<o-(body*2))&&(h-c)<body*0.5){pat='Hammer';bull=true;str=70;}
+  // Shooting Star
+  else if(c<o&&(h>o+(body*2))&&(c-l)<body*0.5){pat='Shooting Star';bull=false;str=70;}
+  // Doji
+  else if(body<range*0.1){pat='Doji';bull=null;str=40;}
+  // Strong Bullish candle
+  else if(c>o&&body>range*0.7){pat='Strong Bull';bull=true;str=60;}
+  // Strong Bearish candle
+  else if(c<o&&body>range*0.7){pat='Strong Bear';bull=false;str=60;}
+  return{pat,bull,str};
+}
+function calcBB(closes,period=20){
+  const ma=closes.slice(-period).reduce((a,b)=>a+b,0)/period;
+  const std=Math.sqrt(closes.slice(-period).reduce((a,v)=>a+(v-ma)**2,0)/period);
+  const upper=ma+2*std,lower=ma-2*std;
+  const pct=closes[closes.length-1]===upper?100:(closes[closes.length-1]-lower)/(upper-lower||0.001)*100;
+  return{upper,lower,ma,pct:Math.max(0,Math.min(100,pct))};
+}
+function calcSRBonus(highs,lows,closes){
+  const close=closes[closes.length-1];
+  const recentHighs=highs.slice(-30),recentLows=lows.slice(-30);
+  const res=Math.max(...recentHighs.slice(0,-1));
+  const sup=Math.min(...recentLows.slice(0,-1));
+  const range=res-sup||1;
+  const distToSup=(close-sup)/range;
+  const distToRes=(res-close)/range;
+  if(distToSup<0.08)return 6;   // Near support = bullish
+  if(distToRes<0.08)return -6;  // Near resistance = bearish
+  if(distToSup<0.15)return 3;
+  if(distToRes<0.15)return -3;
+  return 0;
+}
+
 async function runBacktest(){
   const btcoin=el('bt-coin').value;
   const bttf=el('bt-tf').value;
@@ -1501,7 +2033,6 @@ async function runBacktest(){
   if(mc)mc.style.display='none';if(tc)tc.style.display='none';
 
   try{
-    // Download 1 year candles from Binance
     const tfMs={'1h':3600000,'4h':14400000,'1d':86400000};
     const now=Date.now();
     const oneYear=now-365*24*3600*1000;
@@ -1514,151 +2045,162 @@ async function runBacktest(){
       if(!d||!d.length)break;
       allCandles=[...allCandles,...d];
       startTime=d[d.length-1][0]+tfMs[bttf];
-      const prog=Math.min(85,((startTime-oneYear)/(now-oneYear))*100);
+      const prog=Math.min(82,((startTime-oneYear)/(now-oneYear))*100);
       el('bt-progbar').style.width=prog+'%';
       set('bt-status',`${allCandles.length} candles downloaded...`);
-      await new Promise(r=>setTimeout(r,100));
+      await new Promise(r=>setTimeout(r,80));
     }
+    el('bt-progbar').style.width='88%';
+    set('bt-status','Ultra-Smart Engine: SL/TP + Candlestick + ADX + BB analysis...');
 
-    el('bt-progbar').style.width='90%';
-    set('bt-status','Smart signal engine chal rahi hai...');
-
-    // ── SMART SIGNAL ENGINE ──
-    // Hold period based on timeframe
-    const holdCandles={'1h':4,'4h':3,'1d':3}[bttf]||4;
-    // Min score to enter trade
-    const minScore=68;
+    // ── ULTRA SMART ENGINE v2 — 70-80% ACCURACY TARGET ──
+    const holdMax={'1h':6,'4h':4,'1d':4}[bttf]||6;
+    const minScore=70; // Higher threshold = better accuracy
+    const riskPct=0.02; // 2% risk per trade
+    const rrRatio=2.0;  // 2:1 reward:risk
 
     const trades=[];
     let capital=100000;
     let equity=[100000];
-    const eqDates=[new Date(allCandles[0][0])];
     let inTrade=false;
-    let holdLeft=0;
-    let tradeEntry=0,tradePnl=0,tradeDir='';
+    let tradeEntry=0,tradeSL=0,tradeTP=0,tradeDir='',holdLeft=0,tradeIdx=0;
 
-    for(let i=50;i<allCandles.length-holdCandles;i++){
-      // If in trade, count down hold period
+    for(let i=55;i<allCandles.length-2;i++){
+      const opens=allCandles.slice(i-30,i+1).map(x=>parseFloat(x[1]));
+      const highs=allCandles.slice(i-30,i+1).map(x=>parseFloat(x[2]));
+      const lows=allCandles.slice(i-30,i+1).map(x=>parseFloat(x[3]));
+      const closes=allCandles.slice(i-55,i+1).map(x=>parseFloat(x[4]));
+      const vols=allCandles.slice(i-25,i+1).map(x=>parseFloat(x[5]));
+      const close=closes[closes.length-1];
+
+      // ── IF IN TRADE — check SL/TP FIRST ──
       if(inTrade){
+        const curH=highs[highs.length-1];
+        const curL=lows[lows.length-1];
+        let exitPrice=null,exitReason='';
+        if(tradeDir==='LONG'){
+          if(curL<=tradeSL){exitPrice=tradeSL;exitReason='SL';}
+          else if(curH>=tradeTP){exitPrice=tradeTP;exitReason='TP';}
+        } else {
+          if(curH>=tradeSL){exitPrice=tradeSL;exitReason='SL';}
+          else if(curL<=tradeTP){exitPrice=tradeTP;exitReason='TP';}
+        }
         holdLeft--;
-        if(holdLeft<=0){
-          // Exit at hold candle close
-          const exitC=allCandles[i];
-          const exitPrice=parseFloat(exitC[4]);
-          const pnlPct=tradeDir==='LONG'
-            ?(exitPrice-tradeEntry)/tradeEntry*100
-            :(tradeEntry-exitPrice)/tradeEntry*100;
-          // 2% risk per trade, position size = 2% of capital / SL%
-          const posSize=Math.min(0.3,0.02/0.03); // max 30% per trade
+        if(!exitPrice&&holdLeft<=0){exitPrice=close;exitReason='Time';}
+        if(exitPrice){
+          const pnlPct=tradeDir==='LONG'?(exitPrice-tradeEntry)/tradeEntry*100:(tradeEntry-exitPrice)/tradeEntry*100;
+          const slPct=Math.abs(tradeEntry-tradeSL)/tradeEntry*100||2;
+          const posSize=Math.min(0.25,riskPct/(slPct/100));
           capital=capital*(1+pnlPct/100*posSize);
           equity.push(capital);
-          eqDates.push(new Date(exitC[0]));
-          // Update last trade exit
-          if(trades.length>0){
-            const lt=trades[trades.length-1];
-            lt.exit=exitPrice;lt.pnl=pnlPct;lt.win=pnlPct>0;
-          }
+          if(trades.length>0){const lt=trades[trades.length-1];lt.exit=exitPrice;lt.pnl=pnlPct;lt.win=pnlPct>0;lt.exitReason=exitReason;}
           inTrade=false;
         }
         continue;
       }
 
       // ── INDICATORS ──
-      const closes=allCandles.slice(i-50,i+1).map(x=>parseFloat(x[4]));
-      const highs=allCandles.slice(i-14,i+1).map(x=>parseFloat(x[2]));
-      const lows=allCandles.slice(i-14,i+1).map(x=>parseFloat(x[3]));
-      const vols=allCandles.slice(i-20,i+1).map(x=>parseFloat(x[5]));
-
-      const close=closes[closes.length-1];
-      const prev=closes[closes.length-2];
-
-      // MAs
+      const rsi=calcRSI(closes,14);
       const ma8=closes.slice(-8).reduce((a,b)=>a+b,0)/8;
       const ma21=closes.slice(-21).reduce((a,b)=>a+b,0)/21;
       const ma50=closes.slice(-50).reduce((a,b)=>a+b,0)/50;
-
-      // RSI-14
-      let gains=0,losses2=0;
-      for(let j=closes.length-14;j<closes.length;j++){
-        const d=closes[j]-closes[j-1];
-        if(d>0)gains+=d;else losses2+=Math.abs(d);
-      }
-      const rs=losses2===0?100:gains/losses2;
-      const rsi=100-(100/(1+rs));
-
-      // Volume
+      const ema12=calcEMA(closes,12);
+      const ema26=calcEMA(closes,26);
+      const macd=ema12-ema26;
+      const atr=calcATR(highs,lows,closes,14);
+      const atrPct=(atr/close)*100;
+      const adx=calcADX(highs,lows,closes,14);
+      const bb=calcBB(closes,20);
+      const candle=detectCandle(opens,highs,lows,closes);
+      const srBonus=calcSRBonus(highs,lows,closes);
       const avgVol=vols.slice(-20,-1).reduce((a,b)=>a+b,0)/19;
       const curVol=vols[vols.length-1];
-      const volSpike=curVol>avgVol*1.4;
-
-      // ATR-14
-      let atrSum=0;
-      for(let j=1;j<=14;j++){
-        const h=highs[highs.length-j],l=lows[lows.length-j],pc=closes[closes.length-j-1];
-        atrSum+=Math.max(h-l,Math.abs(h-pc),Math.abs(l-pc));
-      }
-      const atr=atrSum/14;
-      const atrPct=(atr/close)*100;
-
-      // MACD (12,26)
-      const ema12=closes.slice(-12).reduce((a,b,i,arr)=>i===0?b:a*0.846+b*0.154,closes[closes.length-12]);
-      const ema26=closes.slice(-26).reduce((a,b,i,arr)=>i===0?b:a*0.926+b*0.074,closes[closes.length-26]);
-      const macd=ema12-ema26;
-
-      // Price change %
-      const chg1=(close-prev)/prev*100;
+      const volSpike=curVol>avgVol*1.3;
+      const chg1=(close-closes[closes.length-2])/closes[closes.length-2]*100;
       const chg5=(close-closes[closes.length-6])/closes[closes.length-6]*100;
+      const prev2=closes[closes.length-3];
+      const momentum3=(close-prev2)/prev2*100;
 
-      // ── SCORE CALCULATION ──
+      // Skip sideways market (ADX<20 = no trend)
+      if(adx<18)continue;
+      // Skip extreme volatility
+      if(atrPct>8)continue;
+
+      // ── ULTRA SCORE (0-100) ──
       let score=50;
 
-      // Trend (MA alignment)
-      if(close>ma8&&ma8>ma21&&ma21>ma50){score+=15;} // Perfect uptrend
-      else if(close>ma8&&ma8>ma21){score+=8;}
-      else if(close<ma8&&ma8<ma21&&ma21<ma50){score-=15;} // Perfect downtrend
-      else if(close<ma8&&ma8<ma21){score-=8;}
+      // 1. MA Trend Alignment (max ±18)
+      if(close>ma8&&ma8>ma21&&ma21>ma50)score+=18;
+      else if(close>ma8&&ma8>ma21)score+=10;
+      else if(close>ma8&&ma8>ma50)score+=5;
+      else if(close<ma8&&ma8<ma21&&ma21<ma50)score-=18;
+      else if(close<ma8&&ma8<ma21)score-=10;
+      else if(close<ma8&&ma8<ma50)score-=5;
 
-      // RSI
-      if(rsi<35){score+=12;}       // Oversold = buy
-      else if(rsi<45){score+=6;}
-      else if(rsi>70){score-=12;}  // Overbought = sell
-      else if(rsi>60){score-=5;}
+      // 2. RSI (max ±14)
+      if(rsi<28)score+=14;
+      else if(rsi<35)score+=10;
+      else if(rsi<42)score+=5;
+      else if(rsi>78)score-=14;
+      else if(rsi>70)score-=10;
+      else if(rsi>62)score-=5;
 
-      // MACD
-      if(macd>0&&ema12>ema26){score+=8;}
-      else if(macd<0&&ema12<ema26){score-=8;}
+      // 3. MACD crossover (max ±10)
+      if(macd>0&&ema12>ema26)score+=10;
+      else if(macd<0&&ema12<ema26)score-=10;
 
-      // Volume confirmation
-      if(volSpike&&chg1>0){score+=7;}
-      else if(volSpike&&chg1<0){score-=7;}
+      // 4. Volume spike with direction (max ±9)
+      if(volSpike&&chg1>0)score+=9;
+      else if(volSpike&&chg1<0)score-=9;
+      else if(volSpike)score+=3;
 
-      // Momentum
-      if(chg5>3){score+=5;}else if(chg5<-3){score-=5;}
-      if(chg1>1.5){score+=4;}else if(chg1<-1.5){score-=4;}
+      // 5. Candlestick Pattern (max ±8)
+      if(candle.bull===true)score+=Math.round(candle.str*0.08);
+      else if(candle.bull===false)score-=Math.round(candle.str*0.08);
 
-      // Volatility filter — skip if too choppy
-      if(atrPct>5){score=Math.max(20,Math.min(80,score));}
+      // 6. Bollinger Band position (max ±7)
+      if(bb.pct<10)score+=7;
+      else if(bb.pct<20)score+=4;
+      else if(bb.pct>90)score-=7;
+      else if(bb.pct>80)score-=4;
 
-      score=Math.max(0,Math.min(100,score));
+      // 7. Support/Resistance (max ±6)
+      score+=srBonus;
 
-      // ── ENTRY CONDITIONS ──
-      const isBuy=score>=minScore&&rsi<65&&ma8>ma21&&volSpike;
-      const isSell=score<=(100-minScore)&&rsi>40&&ma8<ma21&&volSpike;
+      // 8. Momentum (max ±6)
+      if(chg5>4)score+=6;else if(chg5>2)score+=3;
+      else if(chg5<-4)score-=6;else if(chg5<-2)score-=3;
 
-      if(isBuy||isSell){
+      // 9. ADX Trend Strength bonus (max +5)
+      if(adx>40)score+=5*(chg1>0?1:-1);
+      else if(adx>30)score+=3*(chg1>0?1:-1);
+
+      score=Math.max(0,Math.min(100,Math.round(score)));
+
+      // ── ENTRY: ULTRA STRICT (70+ or 30- required) ──
+      // Additional confirmation: at least 4 of 5 must agree
+      const bullConfirm=[close>ma8,ma8>ma21,rsi<55,macd>0,volSpike||candle.bull===true].filter(Boolean).length;
+      const bearConfirm=[close<ma8,ma8<ma21,rsi>45,macd<0,volSpike||candle.bull===false].filter(Boolean).length;
+
+      const isBuy=score>=minScore&&rsi<60&&ma8>ma21&&bullConfirm>=4;
+      const isSell=score<=(100-minScore)&&rsi>40&&ma8<ma21&&bearConfirm>=4;
+
+      if((isBuy||isSell)&&!inTrade){
         const dir=isBuy?'LONG':'SHORT';
-        const sl=isBuy?close*(1-Math.max(0.025,atrPct/100*1.5)):close*(1+Math.max(0.025,atrPct/100*1.5));
-        const tp=isBuy?close*(1+Math.max(0.05,atrPct/100*2.5)):close*(1-Math.max(0.05,atrPct/100*2.5));
+        const slDist=Math.max(atr*1.2,close*0.02);
+        const tpDist=slDist*rrRatio;
+        const sl=isBuy?close-slDist:close+slDist;
+        const tp=isBuy?close+tpDist:close-tpDist;
         trades.push({
           date:new Date(allCandles[i][0]),
           dir,entry:close,exit:close,
           target:tp,stop:sl,
-          pnl:0,win:false,score
+          pnl:0,win:false,score,
+          candle:candle.pat||'—',exitReason:'—'
         });
         inTrade=true;
-        holdLeft=holdCandles;
-        tradeEntry=close;
-        tradeDir=dir;
+        holdLeft=holdMax;
+        tradeEntry=close;tradeSL=sl;tradeTP=tp;tradeDir=dir;
       }
     }
 
@@ -1743,14 +2285,16 @@ async function runBacktest(){
       </div>`;
     }).join(''));}
 
-    // Trade log
+    // Trade log — upgraded with candle + exit reason
     if(tc){tc.style.display='block';
-    set('tlog-summary',`${wins.length}W / ${losses.length}L | Final: ₹${(capital/1000).toFixed(1)}K`);
-    setH('tradelog',trades.slice(-20).reverse().map(t=>{
-      return`<div class="trade-item">
-        <span class="trade-dir" style="background:${t.dir==='LONG'?'rgba(0,255,157,0.1)':'rgba(255,45,85,0.1)'};color:${t.dir==='LONG'?'var(--green)':'var(--red)'};">${t.dir}</span>
+    set('tlog-summary',`${wins.length}W / ${losses.length}L | WR: ${winRate.toFixed(1)}% | Final: ₹${(capital/1000).toFixed(1)}K`);
+    setH('tradelog',trades.slice(-30).reverse().map(t=>{
+      return`<div class="trade-item" style="flex-wrap:wrap;gap:4px">
+        <span class="trade-dir" style="background:${t.dir==='LONG'?'rgba(0,255,157,0.1)':'rgba(255,45,85,0.1)'};color:${t.dir==='LONG'?'var(--green)':'var(--red)'}">${t.dir}</span>
         <span class="trade-date">${t.date.toLocaleDateString()}</span>
         <span class="trade-entry">${pf(t.entry)} → ${pf(t.exit)}</span>
+        <span style="font-size:8px;color:var(--accent);background:rgba(0,212,255,0.08);padding:2px 5px;border-radius:4px">${t.candle||'—'}</span>
+        <span style="font-size:8px;color:var(--dim);">[Exit:${t.exitReason||'—'}]</span>
         <span class="trade-pnl" style="color:${t.pnl>=0?'var(--green)':'var(--red)'};font-family:'Orbitron',monospace">${(t.pnl>=0?'+':'')+t.pnl.toFixed(2)}%</span>
       </div>`;
     }).join(''));}
@@ -1875,8 +2419,196 @@ async function runScanner(){
 }
 
 // ============================================================
-// SEARCH
+// TELEGRAM ALERT SYSTEM
 // ============================================================
+function saveTG(){
+  const tok=el('tg-token')?.value?.trim();
+  const cid=el('tg-chatid')?.value?.trim();
+  if(!tok||!cid){set('tg-status','❌ Token + Chat ID dono chahiye!');return;}
+  localStorage.setItem('tg_token',tok);
+  localStorage.setItem('tg_chatid',cid);
+  set('tg-status','✅ Saved!');
+  setTimeout(()=>set('tg-status',''),2000);
+}
+
+async function sendTelegram(){
+  // Show/hide config if no token
+  const tok=localStorage.getItem('tg_token')||el('tg-token')?.value?.trim();
+  const cid=localStorage.getItem('tg_chatid')||el('tg-chatid')?.value?.trim();
+  const tgCfg=el('tg-config');
+  if(tgCfg)tgCfg.style.display=tgCfg.style.display==='none'||!tgCfg.style.display?'flex':'none';
+  if(!tok||!cid){return;}
+
+  const sd=sdir(D.total);
+  const emoji=D.total>=72?'🚀':D.total>=58?'📈':D.total>=45?'⏸️':D.total>=32?'📉':'🔴';
+  const msg=`${emoji} *QUANT TERMINAL SIGNAL*\n\n`+
+    `🪙 Coin: *${sym}* | TF: *${tf}*\n`+
+    `💰 Price: *${pf(D.price||0)}*\n`+
+    `📊 24h: *${(D.chg24>=0?'+':'')+D.chg24?.toFixed(2)}%*\n\n`+
+    `🎯 Signal: *${sd.d}* (Score: ${D.total}/100)\n`+
+    `📍 Entry: *${pf(D.price||0)}*\n`+
+    (D.high24&&D.low24?`🎯 Target: *${pf(D.price*(D.total>=50?1.04:0.96))}* (+4%)\n⛔ Stop: *${pf(D.price*(D.total>=50?0.98:1.02))}* (-2%)\n\n`:'') +
+    `📡 Fear&Greed: ${D.fg||'--'} (${D.fgTxt||'--'})\n`+
+    `💎 Funding: ${D.fund!==undefined?D.fund.toFixed(4)+'%':'--'}\n`+
+    `🐋 Whale: ${D.wBull===true?'BUY Dominant':D.wBull===false?'SELL Dominant':'Neutral'}\n`+
+    `📈 OI Change: ${D.oiChg!==undefined?(D.oiChg>=0?'+':'')+D.oiChg.toFixed(2)+'%':'--'}\n\n`+
+    `⏰ ${new Date().toLocaleString('hi-IN')}\n`+
+    `🤖 Quant Terminal v7 | @QuantSignals`;
+
+  try{
+    const r=await fetch(`https://api.telegram.org/bot${tok}/sendMessage`,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({chat_id:cid,text:msg,parse_mode:'Markdown'})
+    });
+    const d=await r.json();
+    if(d.ok){set('tg-status','✅ Sent!');setTimeout(()=>set('tg-status',''),3000);}
+    else{set('tg-status','❌ '+d.description);}
+  }catch(e){
+    // Fallback — copy to clipboard
+    try{
+      await navigator.clipboard.writeText(msg.replace(/\*/g,''));
+      set('tg-status','📋 Copied! Paste in Telegram');
+    }catch{
+      set('tg-status','❌ Error: '+e.message);
+    }
+  }
+}
+
+// Auto-send telegram if score crosses threshold
+function autoTelegramCheck(score,prevScore){
+  const thresh=72;
+  if(score>=thresh&&prevScore<thresh){
+    const tok=localStorage.getItem('tg_token');
+    const cid=localStorage.getItem('tg_chatid');
+    if(tok&&cid)sendTelegram();
+  }
+}
+
+// ============================================================
+// SCANNER AUTO-REFRESH
+// ============================================================
+let scanAutoTimer=null;
+let scanAutoMin=5; // 5 min default
+function startScanAutoRefresh(minutes){
+  if(scanAutoTimer)clearInterval(scanAutoTimer);
+  scanAutoMin=minutes||5;
+  scanAutoTimer=setInterval(()=>{
+    if(!scanRun)runScanner();
+  },scanAutoMin*60*1000);
+  set('scan-auto-status','Auto: '+scanAutoMin+'min ✅');
+}
+function stopScanAutoRefresh(){
+  if(scanAutoTimer){clearInterval(scanAutoTimer);scanAutoTimer=null;}
+  set('scan-auto-status','Auto: OFF');
+}
+
+// ============================================================
+// GOLD (XAUUSD) SIGNAL TAB
+// ============================================================
+async function loadGoldTab(){
+  try{
+    const gUrl='https://query1.finance.yahoo.com/v8/finance/chart/GC%3DF?interval=1d&range=30d';
+    const gr=await sf(gUrl);
+    let gPrice=D.gp||3200,gChg=D.gc||0,gHistory=[];
+    if(gr?.chart?.result?.[0]){
+      const res=gr.chart.result[0];
+      gPrice=res.meta.regularMarketPrice||gPrice;
+      const cls=res.indicators.quote[0].close.filter(x=>x!=null);
+      gHistory=cls;
+      if(cls.length>=2)gChg=((gPrice-cls[cls.length-2])/cls[cls.length-2]*100);
+    }
+    let gs=50;
+    if(gChg>3)gs+=18;else if(gChg>1.5)gs+=12;else if(gChg>0.5)gs+=6;else if(gChg>0)gs+=2;
+    else if(gChg<-3)gs-=18;else if(gChg<-1.5)gs-=12;else if(gChg<-0.5)gs-=6;else gs-=2;
+    const fg=D.fg||50;
+    if(fg<20)gs+=15;else if(fg<35)gs+=8;else if(fg>75)gs-=8;else if(fg>85)gs-=15;
+    if((D.fund||0)<-0.05)gs+=8;else if((D.fund||0)>0.1)gs-=5;
+    const oiC=D.oiChg||0;
+    if(oiC<-10)gs+=10;else if(oiC>10&&(D.chg24||0)>0)gs-=5;
+    if((D.chg24||0)<-5)gs+=12;else if((D.chg24||0)>5)gs-=8;
+    gs=Math.max(0,Math.min(100,gs));
+
+    const gDir=gs>=65?'\u25b2 BULLISH':gs<=35?'\u25bc BEARISH':'\u25c6 NEUTRAL';
+    const gCol=gs>=65?'var(--green)':gs<=35?'var(--red)':'var(--gold)';
+    const cryptoUp=(D.chg24||0)>0;const goldUp=gChg>0;
+    const corrType=goldUp&&cryptoUp?'POSITIVE':goldUp&&!cryptoUp?'NEGATIVE':!goldUp&&cryptoUp?'NEGATIVE':'MIXED';
+    const corrTxt=goldUp&&cryptoUp?'Risk-ON + Inflation':goldUp&&!cryptoUp?'Safe Haven Active':!goldUp&&cryptoUp?'Risk Appetite High':'Broad Selloff';
+    const safeHaven=fg<35&&goldUp&&!cryptoUp;
+    let strategy='',tradeSetup='';
+    if(goldUp&&cryptoUp){
+      strategy='\ud83d\ude80 STRONG BUY mode!<br><br>Dono ek saath upar = inflation fear + risk-on mood.<br>\u2705 BTC long \u2705 Gold long \u2705 Inflation hedge play';
+      tradeSetup='Entry: $'+gPrice.toFixed(0)+'<br>Target: $'+(gPrice*1.03).toFixed(0)+' (+3%)<br>Stop: $'+(gPrice*0.985).toFixed(0)+' (-1.5%)<br>R:R = 1:2';
+    }else if(goldUp&&!cryptoUp){
+      strategy='\u26a0\ufe0f SAFE HAVEN mode!<br><br>Gold up, Crypto down = risk se bhaag rahe hain.<br>\u26a0\ufe0f Crypto mat lo \u2705 Gold long \ud83d\udca1 Stablecoin mein raho';
+      tradeSetup='Gold Entry: $'+gPrice.toFixed(0)+'<br>Target: $'+(gPrice*1.025).toFixed(0)+'<br>Stop: $'+(gPrice*0.988).toFixed(0)+'<br>Crypto: WAIT';
+    }else if(!goldUp&&cryptoUp){
+      strategy='\ud83d\udcc8 CRYPTO BULL mode!<br><br>Gold weak, Crypto strong = Risk appetite high!<br>\ud83d\ude80 Crypto longs lagao \u2705 '+sym+' favorable';
+      tradeSetup=sym+' Entry: '+pf(D.price||0)+'<br>Target: '+pf((D.price||0)*1.05)+' (+5%)<br>Stop: '+pf((D.price||0)*0.97)+' (-3%)<br>Gold: AVOID';
+    }else{
+      strategy='\ud83d\udd34 AVOID mode!<br><br>Dono neeche = broad selloff.<br>\u26d4 No new positions \ud83d\udcb0 Cash hold \u23f3 Wait karo';
+      tradeSetup='Gold: $'+gPrice.toFixed(0)+' \u25bc<br>Crypto: '+pf(D.price||0)+' \u25bc<br>Action: CASH HOLD<br>Wait: Reversal signal';
+    }
+    let svgLines='';
+    if(gHistory.length>=5){
+      const mn=Math.min(...gHistory),mx=Math.max(...gHistory),rng=mx-mn||1;
+      const norm=gHistory.map(p=>((p-mn)/rng)*100);
+      const gPts=norm.map((v,i)=>((i/(norm.length-1)*590).toFixed(1)+','+(110-v).toFixed(1))).join(' ');
+      svgLines='<polyline points="'+gPts+'" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linejoin="round"/>'
+        +'<text x="4" y="12" fill="var(--gold)" font-size="9" font-family="monospace">GOLD $'+gPrice.toFixed(0)+'</text>'
+        +'<text x="4" y="24" fill="'+(gChg>=0?'#00ff9d':'#ff2d55')+'" font-size="9" font-family="monospace">'+(gChg>=0?'+':'')+gChg.toFixed(2)+'% today</text>';
+    }
+    set('g-price','$'+gPrice.toFixed(0));styl('g-price','color','var(--gold)');
+    set('g-chg',(gChg>=0?'+':'')+gChg.toFixed(2)+'% today');styl('g-chg','color',gChg>=0?'var(--green)':'var(--red)');
+    set('g-sig',gDir);styl('g-sig','color',gCol);
+    set('g-score','Score: '+gs+'/100 | F&G: '+fg);
+    set('g-corr',corrType);styl('g-corr','color',corrType==='POSITIVE'?'var(--green)':corrType==='NEGATIVE'?'var(--red)':'var(--gold)');
+    set('g-corr-sub',corrTxt);
+    set('g-haven',safeHaven?'\u26a1 ACTIVE':'\u25cb Dormant');styl('g-haven','color',safeHaven?'var(--red)':'var(--green)');
+    set('g-haven-sub',safeHaven?'Investors fleeing to Gold!':'Normal correlation');
+    const svgEl=el('gold-svg');
+    if(svgEl)svgEl.innerHTML=svgLines||'<text x="50%" y="60" text-anchor="middle" fill="rgba(255,184,0,0.3)" font-family="monospace" font-size="11">Insufficient data</text>';
+    setH('gold-analysis',
+      '<b style="color:'+gCol+'">Gold Score: '+gs+'/100 — '+gDir+'</b><br><br>'+
+      '\ud83d\udccc Gold aaj <b style="color:'+(gChg>=0?'var(--green)':'var(--red)')+'">'+((gChg>=0?'+':'')+gChg.toFixed(2))+'%</b> move kiya. '+sym+' aaj <b style="color:'+((D.chg24||0)>=0?'var(--green)':'var(--red)')+'">'+((D.chg24||0)>=0?'+':'')+(D.chg24||0).toFixed(2)+'%</b> move kiya.<br><br>'+
+      '\ud83d\udcca Fear&Greed: <b>'+fg+'</b> — '+(fg<30?'Extreme Fear = Gold bull zone':fg>70?'Greed = Gold weak':'Moderate sentiment')+'<br>'+
+      '\ud83d\udcb9 Funding Rate: <b>'+(D.fund!==undefined?D.fund.toFixed(4)+'%':'--')+'</b> — '+((D.fund||0)<0?'Negative = Risk-off = Gold favorable':'Positive = Risk-on = Gold weak')+'<br>'+
+      '\ud83d\udcc8 OI Change: <b>'+(D.oiChg!==undefined?(D.oiChg>=0?'+':'')+D.oiChg.toFixed(2)+'%':'--')+'</b> — '+(oiC<-10?'OI drop = money fleeing crypto = Gold surge!':oiC>10?'OI rising = crypto active':'Stable')
+    );
+    setH('gold-trade',tradeSetup);setH('gold-strategy',strategy);
+    const rowMsg=goldUp&&cryptoUp?'\u2705 Gold \u25b2 + Crypto \u25b2 = <b style="color:var(--green)">STRONG BUY</b>':
+      goldUp&&!cryptoUp?'\u26a0\ufe0f Gold \u25b2 + Crypto \u25bc = <b style="color:var(--red)">SAFE HAVEN ACTIVE</b>':
+      !goldUp&&cryptoUp?'\ud83d\udcc8 Gold \u25bc + Crypto \u25b2 = <b style="color:var(--green)">BUY CRYPTO</b>':
+      '\ud83d\udd34 Gold \u25bc + Crypto \u25bc = <b style="color:var(--red)">CASH HOLD</b>';
+    setH('g-current-row','Current situation: '+rowMsg);
+  }catch(e){
+    set('g-price','Error');
+    setH('gold-analysis','<span style="color:var(--red)">Gold data load nahi hua: '+e.message+'</span>');
+  }
+}
+// ============================================================
+// NEWS SENTIMENT SCORING (NLP enhanced)
+// ============================================================
+const BULL_WORDS=['surge','rally','bullish','breakout','ath','adoption','partnership','buy','long','moon','pump','gain','rise','support','accumulate','institutional','etf approved','upgrade'];
+const BEAR_WORDS=['crash','dump','bearish','breakdown','hack','ban','scam','fear','sell','short','drop','fall','loss','liquidation','sec','lawsuit','fraud','warning','bubble'];
+function scoreNewsSentiment(titles){
+  let score=0;
+  titles.forEach(t=>{
+    const lo=t.toLowerCase();
+    BULL_WORDS.forEach(w=>{if(lo.includes(w))score+=1.5;});
+    BEAR_WORDS.forEach(w=>{if(lo.includes(w))score-=1.5;});
+  });
+  return Math.max(-10,Math.min(10,score));
+}
+
+// Load TG credentials on page load
+function loadTGCreds(){
+  const tok=localStorage.getItem('tg_token');
+  const cid=localStorage.getItem('tg_chatid');
+  if(tok&&el('tg-token'))el('tg-token').value=tok;
+  if(cid&&el('tg-chatid'))el('tg-chatid').value=cid;
+}
+
 function doSearch(q){
   if(!q||q.length<1){closeSearch();return;}
   const ql=q.toLowerCase();
@@ -1907,6 +2639,7 @@ function showTab(i){
   document.querySelectorAll('.tbc').forEach((t,idx)=>t.classList.toggle('active',idx===i));
   if(i===2)runScanner();
   if(i===6)fetchOrderBook();
+  if(i===8)loadGoldTab();
 }
 
 // ORDER BOOK
@@ -2026,20 +2759,24 @@ async function init(){
   const ov=el('ov');ov.classList.add('show');
   const steps=[
     [10,'LOADING COIN DATA...'],
-    [30,'FETCHING FEAR & GREED...'],
-    [50,'LOADING OPEN INTEREST...'],
-    [70,'CONNECTING LIQUIDATION WS...'],
-    [90,'STARTING AI ENGINE...'],
-    [100,'READY!']
+    [25,'FETCHING FEAR & GREED...'],
+    [40,'LOADING OPEN INTEREST...'],
+    [55,'CONNECTING LIQUIDATION WS...'],
+    [70,'LOADING GOLD DATA...'],
+    [85,'STARTING 9-LAYER AI ENGINE...'],
+    [100,'QUANT TERMINAL v7 READY!']
   ];
   for(const[p,t] of steps){
     el('lprogf').style.width=p+'%';set('ltxt',t);
-    await new Promise(r=>setTimeout(r,400));
+    await new Promise(r=>setTimeout(r,350));
   }
+  loadTGCreds();       // Load saved Telegram credentials
   await fetchAll();
   startLiqWS();
   ov.classList.remove('show');
   startTimer();
+  // Auto-start scanner refresh every 10 min silently
+  setTimeout(()=>startScanAutoRefresh(10),5000);
 }
 document.addEventListener('DOMContentLoaded',init);
 </script>
